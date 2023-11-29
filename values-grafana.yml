@@ -1,0 +1,26 @@
+rbac:
+  create: false
+serviceAccount:
+  create: false
+service:
+  type: ClusterIP # default
+  annotations:
+    dev.okteto.com/auto-ingress: "private"
+persistence:
+  type: pvc # default
+  enabled: true
+  size: 2Gi
+grafana.ini:
+  auth.anonymous:
+    enabled: "true"
+    org_name: Main Org.
+    org_role: Admin
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+    - name: Prometheus
+      type: prometheus
+      url: http://prometheus-server
+      access: proxy
+      isDefault: true
