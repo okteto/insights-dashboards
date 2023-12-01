@@ -1,0 +1,35 @@
+server:
+  persistentVolume:
+    enabled: true # default
+    size: 2Gi
+  service:
+    type: ClusterIP # default
+    annotations:
+      dev.okteto.com/auto-ingress: "private"
+serverFiles:
+  prometheus.yml:
+    scrape_configs:
+    - job_name: 'okteto-insights-invalid'
+      static_configs:
+      - targets: ['okteto.${OKTETO_DOMAIN}:443']
+      scheme: 'https'
+    - job_name: 'okteto-insights'
+      static_configs:
+      - targets: ['okteto.${OKTETO_DOMAIN}:443']
+      scheme: 'https'
+      authorization:
+        credentials: '$INSIGHTS_TOKEN'
+rbac:
+  create: false
+serviceAccounts:
+  server:
+    create: false
+    name: "default"
+kube-state-metrics:
+  enabled: false
+prometheus-node-exporter:
+  enabled: false
+alertmanager:
+  enabled: false
+prometheus-pushgateway:
+  enabled: false
