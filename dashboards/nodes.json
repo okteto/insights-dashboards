@@ -20,7 +20,23 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 1,
-  "links": [],
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [
+        "okteto",
+        "home"
+      ],
+      "targetBlank": false,
+      "title": "",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
   "panels": [
     {
       "collapsed": false,
@@ -999,7 +1015,10 @@
   ],
   "refresh": "auto",
   "schemaVersion": 39,
-  "tags": [],
+  "tags": [
+    "okteto",
+    "dashboard"
+  ],
   "templating": {
     "list": [
       {
@@ -1032,6 +1051,6 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Okteto Nodes",
+  "title": "Nodes",
   "weekStart": ""
 }
