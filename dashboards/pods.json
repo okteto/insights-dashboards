@@ -1,4 +1,41 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -19,7 +56,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
+  "id": null,
   "links": [
     {
       "asDropdown": false,
@@ -37,10 +74,12 @@
       "url": ""
     }
   ],
+  "liveNow": false,
   "panels": [
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -58,7 +97,8 @@
               }
             ]
           },
-          "unit": "Pods"
+          "unit": "Pods",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -88,11 +128,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(sum(okteto_system_pod_container_cpu_usage_cores{namespace=\"$namespace\"}) by (namespace, pod_name))",
@@ -107,7 +148,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -125,7 +167,8 @@
               }
             ]
           },
-          "unit": "Cores"
+          "unit": "Cores",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -155,11 +198,12 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(max(sum(okteto_system_pod_container_cpu_requests_cores{namespace=\"$namespace\"}) by (pod) + max(okteto_system_pod_init_container_cpu_requests_cores{namespace=\"$namespace\"}) by (pod)) by (pod))",
@@ -174,7 +218,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -192,7 +237,8 @@
               }
             ]
           },
-          "unit": "Cores"
+          "unit": "Cores",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -222,11 +268,12 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(okteto_system_pod_container_cpu_usage_cores{namespace=\"$namespace\"})",
@@ -241,7 +288,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -258,7 +306,8 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -288,11 +337,12 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(max(sum(okteto_system_pod_container_memory_requests_bytes{namespace=\"$namespace\"}) by (pod) + max(okteto_system_pod_init_container_memory_requests_bytes{namespace=\"$namespace\"}) by (pod)) by (pod))",
@@ -307,7 +357,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -324,7 +375,8 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -354,11 +406,12 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(okteto_system_pod_container_memory_usage_bytes{namespace=\"$namespace\"})",
@@ -373,7 +426,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -423,7 +477,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -449,7 +504,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(sum(okteto_system_pod_container_cpu_requests_cores{namespace=\"$namespace\"}) by (pod_name))",
@@ -464,7 +520,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -517,7 +574,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -543,7 +601,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(okteto_system_pod_container_cpu_usage_cores{namespace=\"$namespace\"})",
@@ -559,7 +618,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -610,7 +670,8 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -636,7 +697,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(okteto_system_pod_container_memory_usage_bytes{namespace=\"$namespace\"})",
@@ -666,7 +728,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -683,7 +746,8 @@
               }
             ]
           },
-          "unit": "deployments"
+          "unit": "deployments",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -713,11 +777,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(sum(okteto_system_pod_container_cpu_requests_cores{namespace=\"$namespace\", devenv_name=\"$devenv\", controller_type=\"deployment\", pod_type=\"standard\"}) by (controller_name))",
@@ -732,7 +797,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -749,7 +815,8 @@
               }
             ]
           },
-          "unit": "statefulsets"
+          "unit": "statefulsets",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -779,11 +846,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(sum(okteto_system_pod_container_cpu_requests_cores{namespace=\"$namespace\", devenv_name=\"$devenv\", controller_type=\"statefulset\", pod_type=\"standard\"}) by (controller_name)) ",
@@ -798,7 +866,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -815,7 +884,8 @@
               }
             ]
           },
-          "unit": "sessions"
+          "unit": "sessions",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -845,11 +915,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(count(okteto_system_pod_container_cpu_requests_cores{namespace=\"$namespace\", devenv_name=\"$devenv\", pod_type=\"development\"}) by (pod_names))",
@@ -864,7 +935,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -913,7 +985,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -939,7 +1012,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(okteto_system_pod_container_cpu_usage_cores{namespace=\"$namespace\", devenv_name=\"$devenv\", controller_type=\"deployment\", pod_type=\"standard\"}) by (controller_name)",
@@ -954,7 +1028,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1003,7 +1078,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -1029,7 +1105,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(okteto_system_pod_container_cpu_usage_cores{namespace=\"$namespace\", devenv_name=\"$devenv\", controller_type=\"statefulset\", pod_type=\"standard\"}) by (controller_name)",
@@ -1044,7 +1121,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1093,7 +1171,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -1119,7 +1198,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(okteto_system_pod_container_cpu_usage_cores{namespace=\"$namespace\", devenv_name=\"$devenv\", pod_type=\"development\"}) by (controller_name)",
@@ -1134,7 +1214,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1179,8 +1260,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1210,7 +1290,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(okteto_system_pod_container_memory_usage_bytes{namespace=\"$namespace\", devenv_name=\"$devenv\", controller_type=\"deployment\", pod_type=\"standard\"}) by (controller_name)",
@@ -1225,7 +1306,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1270,8 +1352,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1301,7 +1382,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(okteto_system_pod_container_memory_usage_bytes{namespace=\"$namespace\", devenv_name=\"$devenv\", controller_type=\"statefulset\", pod_type=\"standard\"}) by (controller_name)",
@@ -1316,7 +1398,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1361,8 +1444,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1392,7 +1474,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(okteto_system_pod_container_memory_usage_bytes{namespace=\"$namespace\", devenv_name=\"$devenv\", pod_type=\"development\"}) by (controller_name)",
@@ -1406,7 +1489,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "10s",
+  "refresh": "auto",
   "schemaVersion": 39,
   "tags": [
     "okteto",
@@ -1415,8 +1498,10 @@
   "templating": {
     "list": [
       {
+        "current": {},
         "datasource": {
-          "type": "prometheus"
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(okteto_system_pod_container_cpu_requests_cores,namespace)",
         "hide": 0,
@@ -1437,8 +1522,10 @@
         "type": "query"
       },
       {
+        "current": {},
         "datasource": {
-          "type": "prometheus"
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(okteto_system_pod_container_cpu_requests_cores{namespace=\"$namespace\"},devenv_name)",
         "hide": 0,

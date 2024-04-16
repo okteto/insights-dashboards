@@ -1,4 +1,35 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -18,7 +49,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 10,
+  "id": null,
   "links": [
     {
       "asDropdown": false,
@@ -36,6 +67,7 @@
       "url": ""
     }
   ],
+  "liveNow": false,
   "panels": [
     {
       "datasource": {
@@ -58,11 +90,12 @@
         "content": "<img src=\"https://www.okteto.com/docs/img/logo.svg\" alt=\"Okteto Logo\" style=\"width: 30vw; display: block; margin: 0 auto;\">\n<div style=\"max-width: 800px; margin: 0 auto; padding: 20px;\">\n  <h1 style=\"text-align: center;\">Welcome to Okteto Insights</h1>\n  <p style=\"text-align: center;\">Welcome to the Okteto SaaS Grafana instance for Okteto Insights. Here, you can gain valuable insights into your development platform and infrastructure.</p>\n  <p style=\"text-align: center;\">Okteto Insights provides administrators with access to product usage and behavior data, including developer activities, as well as infrastructure utilization and performance data.</p>\n  <p style=\"text-align: center;\">Have questions? Send a ticket to <a href=\"mailto:support@okteto.com\">support@okteto.com</a>.</p>\n  <p style=\"text-align: center;\">Want to check the documentation? Go to <a href=\"https://www.okteto.com/docs/admin/okteto-insights/\">https://www.okteto.com/docs/admin/okteto-insights/</a>.</p>\n  <p style=\"text-align: center;\">Check out the open-source Grafana dashboards at <a href=\"https://github.com/okteto/insights-dashboards\">https://github.com/okteto/insights-dashboards</a>.</p>\n</div>\n",
         "mode": "html"
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
           },
           "expr": "",
           "instant": false,
@@ -74,6 +107,7 @@
       "type": "text"
     }
   ],
+  "refresh": "",
   "schemaVersion": 39,
   "tags": [
     "okteto",
