@@ -11,6 +11,17 @@ If deployed via Okteto, it will be protected by default via [Private endpoints](
 
 For production deployments, consider adjusting the settings to fit your security, scalability and persistence requirements.
 
+| Environment Variable | Default Value | Description |
+|-|-|-|
+| `PROMETHEUS_CHART_VERSION` | `25.19.1` | The version of the Prometheus chart to be deployed. |
+| `GRAFANA_CHART_VERSION` | `7.3.7` | The version of the Grafana chart to be deployed. |
+| `PROMETHEUS_RELEASE_NAME` | `prometheus` | The name of the Prometheus release. |
+| `GRAFANA_RELEASE_NAME` | `grafana` | The name of the Grafana release. |
+| `PROMETHEUS_ARGS` | default helm chart installation flags | Main arguments for deploying the Prometheus chart. |
+| `GRAFANA_ARGS` | default helm chart installation flags | Main arguments for deploying the Grafana chart. |
+| `PROMETHEUS_EXTRA_ARGS` | | Extra arguments for the Helm upgrade command when deploying Prometheus. |
+| `GRAFANA_EXTRA_ARGS` | | Extra arguments for the Helm upgrade command when deploying Grafana. |
+
 ### Okteto
 
 #### Prerequisites
