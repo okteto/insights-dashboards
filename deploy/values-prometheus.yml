@@ -9,13 +9,9 @@ server:
 serverFiles:
   prometheus.yml:
     scrape_configs:
-    - job_name: 'okteto-insights-invalid'
-      static_configs:
-      - targets: ['okteto.${OKTETO_DOMAIN}:443']
-      scheme: 'https'
     - job_name: 'okteto-insights'
       static_configs:
-      - targets: ['okteto.${OKTETO_DOMAIN}:443']
+      - targets: ['${DOMAIN}:443']
       scheme: 'https'
       authorization:
         credentials: '$INSIGHTS_TOKEN'

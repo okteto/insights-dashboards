@@ -1,6 +1,11 @@
 deploy:
-- envsubst < values-prometheus.yml > values-prometheus-rendered.yml
-- helm repo add prometheus https://prometheus-community.github.io/helm-charts
-- helm repo add grafana https://grafana.github.io/helm-charts
-- helm upgrade --install prometheus prometheus/prometheus -f values-prometheus-rendered.yml
-- helm upgrade --install grafana grafana/grafana -f values-grafana.yml
+  remote: true
+  commands:
+    - name: Set DOMAIN from OKTETO_CONTEXT
+      command: echo "DOMAIN=$(echo $OKTETO_CONTEXT | cut -d '/' -f3)" >> "$OKTETO_ENV"
+    - name: Add Helm repositories
+      command: make add-helm-repos
+    - name: Deploy Prometheus
+      command: make deploy-prometheus
+    - name: Deploy Grafana
+      command: make deploy-grafana
