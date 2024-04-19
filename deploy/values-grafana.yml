@@ -24,3 +24,29 @@ datasources:
       url: http://prometheus-server
       access: proxy
       isDefault: true
+dashboardProviders:
+  dashboardproviders.yaml:
+    apiVersion: 1
+    providers:
+    - name: 'default'
+      orgId: 1
+      folder: 'Okteto'
+      type: file
+      disableDeletion: true
+      editable: false
+      options:
+        path: /var/lib/grafana/dashboards/default
+dashboards:
+  default:
+    pods:
+      name: "Pods"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/main/dashboards/pods.json"
+      datasource:
+      - name: DS_PROMETHEUS
+        value: Prometheus
+    nodes:
+      name: "Nodes"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/main/dashboards/nodes.json"
+      datasource:
+      - name: DS_PROMETHEUS
+        value: Prometheus
