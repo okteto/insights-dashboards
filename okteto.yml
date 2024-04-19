@@ -1,0 +1,11 @@
+deploy:
+  remote: true
+  commands:
+    - name: Set DOMAIN from OKTETO_CONTEXT
+      command: echo "DOMAIN=$(echo $OKTETO_CONTEXT | cut -d '/' -f3)" >> "$OKTETO_ENV"
+    - name: Add Helm repositories
+      command: make add-helm-repos
+    - name: Deploy Prometheus
+      command: make deploy-prometheus
+    - name: Deploy Grafana
+      command: make deploy-grafana
