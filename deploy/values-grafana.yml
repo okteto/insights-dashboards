@@ -24,6 +24,8 @@ datasources:
       url: http://prometheus-server
       access: proxy
       isDefault: true
+      jsonData:
+        timeInterval: 60s
 dashboardProviders:
   dashboardproviders.yaml:
     apiVersion: 1
@@ -47,6 +49,12 @@ dashboards:
     nodes:
       name: "Nodes"
       url: "https://raw.githubusercontent.com/okteto/insights-dashboards/main/dashboards/nodes.json"
+      datasource:
+      - name: DS_PROMETHEUS
+        value: Prometheus
+    namespacesAndPreviews:
+      name: "Namespaces and Previews"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/main/dashboards/namespaces-and-previews.json"
       datasource:
       - name: DS_PROMETHEUS
         value: Prometheus
