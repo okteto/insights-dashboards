@@ -52,9 +52,9 @@ dashboards:
       datasource:
       - name: DS_PROMETHEUS
         value: Prometheus
-    namespacesAndPreviews:
-      name: "Namespaces and Previews"
-      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/main/dashboards/namespaces-and-previews.json"
+    namespacesPreviewsAndUsers:
+      name: "Namespaces, Previews and Users"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/main/dashboards/namespaces-previews-and-users.json"
       datasource:
       - name: DS_PROMETHEUS
         value: Prometheus

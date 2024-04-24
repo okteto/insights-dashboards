@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.4.0"
+      "version": "10.4.1"
     },
     {
       "type": "datasource",
@@ -128,7 +128,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 12,
+        "w": 8,
         "x": 0,
         "y": 0
       },
@@ -152,7 +152,7 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -249,8 +249,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 12,
-        "x": 12,
+        "w": 8,
+        "x": 8,
         "y": 0
       },
       "id": 3,
@@ -273,7 +273,7 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -315,6 +315,103 @@
         }
       ],
       "title": "Preview count",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "text",
+            "mode": "fixed"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "Total"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Active users"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "Active"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 16,
+        "y": 0
+      },
+      "id": 5,
+      "maxDataPoints": 1,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 30
+        },
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "count(okteto_system_user_last_seen_time)",
+          "instant": false,
+          "legendFormat": "Total users",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "count(increase(okteto_system_user_last_seen_time[$__interval]) > 0)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Active users",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "User count",
       "type": "stat"
     },
     {
@@ -378,12 +475,12 @@
       },
       "gridPos": {
         "h": 10,
-        "w": 12,
+        "w": 8,
         "x": 0,
         "y": 3
       },
       "id": 2,
-      "maxDataPoints": 24,
+      "maxDataPoints": 16,
       "options": {
         "legend": {
           "calcs": [],
@@ -460,7 +557,6 @@
           },
           "decimals": 0,
           "mappings": [],
-          "min": 0,
           "noValue": "0",
           "thresholds": {
             "mode": "absolute",
@@ -476,12 +572,12 @@
       },
       "gridPos": {
         "h": 10,
-        "w": 12,
-        "x": 12,
+        "w": 8,
+        "x": 8,
         "y": 3
       },
       "id": 4,
-      "maxDataPoints": 24,
+      "maxDataPoints": 16,
       "options": {
         "legend": {
           "calcs": [],
@@ -523,6 +619,105 @@
       ],
       "title": "Previews over time",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 16,
+        "y": 3
+      },
+      "id": 6,
+      "maxDataPoints": 16,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "count(increase(okteto_system_user_last_seen_time[$__interval])>0)",
+          "instant": false,
+          "legendFormat": "Active users over time",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Active users over time",
+      "type": "timeseries"
     }
   ],
   "refresh": "auto",
@@ -540,6 +735,6 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Namespaces & Previews",
+  "title": "Namespaces, Previews and Users",
   "weekStart": ""
 }
