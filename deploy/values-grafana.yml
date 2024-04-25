@@ -58,3 +58,9 @@ dashboards:
       datasource:
       - name: DS_PROMETHEUS
         value: Prometheus
+    buildAndDeploy:
+      name: "Build and Deploy"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/main/dashboards/build-and-deploy.json"
+      datasource:
+      - name: DS_PROMETHEUS
+        value: Prometheus
