@@ -108,3 +108,59 @@ Before deploying standalone, make sure you have the following prerequisites:
    ```
 
 This will deploy Prometheus and Grafana using the exported values of `INSIGHTS_TOKEN` and `DOMAIN` variables.
+
+## Prometheus Operator
+
+To scrape Prometheus metrics from [Okteto Insights](https://www.okteto.com/docs/admin/okteto-insights/) using [Prometheus Operator](https://prometheus-operator.dev/), follow these steps:
+
+1. **Ensure prerequisites:**
+   - [Prometheus Operator](https://prometheus-operator.dev/) is installed in the cluster, and its version is higher than 0.65.1.
+   - The CRD for [`ScrapeConfig`](https://prometheus-operator.dev/docs/user-guides/scrapeconfig/) is correctly installed in the cluster.
+
+2. **Apply the following [`ScrapeConfig`](https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1alpha1.ScrapeConfigSpec) manifest in the `okteto` namespace:**
+
+   ```yaml
+   apiVersion: monitoring.coreos.com/v1alpha1
+   kind: ScrapeConfig
+   metadata:
+     name: okteto
+     namespace: okteto
+     labels:
+       instance: okteto
+   spec:
+     staticConfigs:
+     - targets:
+       - okteto.yourinstancedomain.com:443
+     scheme: HTTPS
+     authorization:
+       credentials:
+         key: bearer
+         name: okteto-insights
+   ```
+
+   Replace `okteto.yourinstancedomain.com` with your Okteto instance address. Refer to the following documentation for getting this value:
+   - [Okteto Subdomain Configuration](https://www.okteto.com/docs/self-hosted/helm-configuration/#subdomain)
+   - [Okteto Public Override Configuration](https://www.okteto.com/docs/self-hosted/helm-configuration/#publicoverride)
+
+   If you customized your Helm release `insights.bearerSecret` configuration, replace `spec.authorization.credentials` accordingly. Refer to the following documentation for more information:
+   - [Okteto Insights Configuration](https://www.okteto.com/docs/self-hosted/helm-configuration/#insights)
+
+3. **Label the `okteto` namespace:**
+
+   ```sh
+   kubectl label ns okteto prometheus-operator=okteto-insights
+   ```
+
+4. **Update your Prometheus Operator instance with the following sections:**
+
+   ```yaml
+   spec:
+     scrapeConfigSelector:
+       matchLabels:
+         instance: okteto
+     scrapeConfigNamespaceSelector:
+       matchLabels:
+         prometheus-operator: okteto-insights
+   ```
+
+These steps will configure your Prometheus Operator to scrape metrics from Okteto Insights.
