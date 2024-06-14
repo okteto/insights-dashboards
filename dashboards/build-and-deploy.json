@@ -243,7 +243,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Time saved on average"
+              "options": "Time saved by Smart Builds"
             },
             "properties": [
               {
@@ -304,7 +304,7 @@
           "expr": "sum(okteto_usage_build_duration_seconds_sum{}) / sum(okteto_usage_build_duration_seconds_count{}) * sum(okteto_usage_build_result{result=\"skipped\"})",
           "hide": false,
           "instant": false,
-          "legendFormat": "Time saved on average",
+          "legendFormat": "Time saved by Smart Builds",
           "range": true,
           "refId": "B"
         }
@@ -636,7 +636,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Time saved on average"
+              "options": "Time saved by Smart Builds"
             },
             "properties": [
               {
@@ -696,7 +696,7 @@
           "expr": "sum(okteto_usage_build_duration_seconds_sum{devenv_name=\"$devenv\"}) / sum(okteto_usage_build_duration_seconds_count{devenv_name=\"$devenv\"}) * sum(okteto_usage_build_result{devenv_name=\"$devenv\", result=\"skipped\"})",
           "hide": false,
           "instant": false,
-          "legendFormat": "Time saved on average",
+          "legendFormat": "Time saved by Smart Builds",
           "range": true,
           "refId": "B"
         }
