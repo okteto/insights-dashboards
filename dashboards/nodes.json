@@ -1108,6 +1108,9 @@
     "to": "now"
   },
   "timepicker": {
+    "collapse": true,
+    "enable": true,
+    "now": false,
     "time_options": [
       "5m",
       "10m",
@@ -1122,7 +1125,9 @@
       "24h",
       "2d",
       "7d"
-    ]
+    ],
+    "status": "Stable",
+    "type": "timepicker"
   },
   "timezone": "browser",
   "title": "Nodes",
