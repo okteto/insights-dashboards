@@ -63,10 +63,7 @@
       "icon": "external link",
       "includeVars": false,
       "keepTime": false,
-      "tags": [
-        "okteto",
-        "home"
-      ],
+      "tags": ["okteto", "home"],
       "targetBlank": false,
       "title": "",
       "tooltip": "",
@@ -128,9 +125,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "/^Node count$/",
           "values": false
         },
@@ -197,9 +192,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "/^Total CPU$/",
           "values": false
         },
@@ -306,9 +299,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -388,9 +379,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "/^Total Memory$/",
           "values": false
         },
@@ -498,9 +487,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -1087,10 +1074,7 @@
   ],
   "refresh": "auto",
   "schemaVersion": 39,
-  "tags": [
-    "okteto",
-    "dashboard"
-  ],
+  "tags": ["okteto", "dashboard"],
   "templating": {
     "list": [
       {
@@ -1120,10 +1104,26 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
-  "timepicker": {},
+  "timepicker": {
+    "time_options": [
+      "5m",
+      "10m",
+      "15m",
+      "30m",
+      "60m",
+      "90m",
+      "2h",
+      "3h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d"
+    ]
+  },
   "timezone": "browser",
   "title": "Nodes",
   "weekStart": ""
