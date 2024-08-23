@@ -1104,7 +1104,7 @@
     ]
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-11h",
     "to": "now"
   },
   "timepicker": {
