@@ -1126,9 +1126,8 @@
   "timepicker": {
     "collapse": true,
     "enable": true,
-    "now": false,
+    "now": true,
     "refresh_intervals": [
-      "5s",
       "10s",
       "30s",
       "1m",
@@ -1154,7 +1153,6 @@
       "2d",
       "7d"
     ],
-    "status": "Stable",
     "type": "timepicker"
   },
   "timezone": "browser",
