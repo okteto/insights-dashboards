@@ -720,7 +720,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "auto",
+  "refresh": "",
   "schemaVersion": 39,
   "tags": [
     "dashboard",

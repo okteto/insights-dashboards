@@ -990,7 +990,7 @@
       "type": "bargauge"
     }
   ],
-  "refresh": "auto",
+  "refresh": "",
   "schemaVersion": 39,
   "tags": [
     "okteto",
@@ -1016,7 +1016,7 @@
           "query": "label_values(okteto_usage_build_result,devenv_name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
-        "refresh": 2,
+        "refresh": "",
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
