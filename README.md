@@ -43,7 +43,7 @@ The Namespaces, Previews, and Users dashboard gives you metrics which help you m
 
 ## Installation: Deploy Prometheus for Metric Scraping and Grafana for Dashboard Visualization
 
-The following sections outline deployment steps for setting up a Prometheus and Grafana bundle that will scrape metrics from [Okteto Insights](https://www.okteto.com/docs/core/okteto-insights/), covering both Okteto and standalone setups.
+The following sections outline deployment steps for setting up a Prometheus and Grafana bundle that will scrape metrics from [Okteto Insights](https://www.okteto.com/docs/admin/okteto-insights/), covering both Okteto and standalone setups.
 
 However, it's important to note that while the provided deployment solution is suitable for testing and development purposes, it may not be optimal for production scenarios.
 
@@ -111,7 +111,7 @@ This will deploy Prometheus and Grafana using the exported values of `INSIGHTS_T
 
 ## Prometheus Operator
 
-To scrape Prometheus metrics from [Okteto Insights](https://www.okteto.com/docs/core/okteto-insights/) using [Prometheus Operator](https://prometheus-operator.dev/), follow these steps:
+To scrape Prometheus metrics from [Okteto Insights](https://www.okteto.com/docs/admin/okteto-insights/) using [Prometheus Operator](https://prometheus-operator.dev/), follow these steps:
 
 1. **Ensure prerequisites:**
    - [Prometheus Operator](https://prometheus-operator.dev/) is installed in the cluster, and its version is higher than 0.65.1.
