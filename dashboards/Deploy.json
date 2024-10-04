@@ -71,23 +71,7 @@
       "url": ""
     }
   ],
-  "liveNow": false,
   "panels": [
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 12,
-      "panels": [],
-      "repeat": "node",
-      "repeatDirection": "h",
-      "title": "Node \"${node}\"",
-      "type": "row"
-    },
     {
       "datasource": {
         "type": "prometheus",
@@ -96,47 +80,56 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "text",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "light-blue",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
-          "unit": "Cores"
+          "unit": "none"
         },
         "overrides": [
           {
             "matcher": {
               "id": "byName",
-              "options": "Memory"
+              "options": "Total Build Time"
             },
             "properties": [
               {
                 "id": "unit",
-                "value": "decbytes"
+                "value": "dtdurations"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time saved by Smart Builds"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dtdurations"
               }
             ]
           }
         ]
       },
       "gridPos": {
-        "h": 3,
-        "w": 24,
+        "h": 4,
+        "w": 6,
         "x": 0,
-        "y": 1
+        "y": 0
       },
-      "id": 13,
+      "id": 175,
+      "interval": "1h",
+      "maxDataPoints": 500,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -149,6 +142,9 @@
           "values": false
         },
         "showPercentChange": false,
+        "text": {
+          "valueSize": 30
+        },
         "textMode": "value_and_name",
         "wideLayout": false
       },
@@ -160,24 +156,15 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "okteto_system_node_cpu_cores{node_name=\"$node\"}",
-          "instant": false,
-          "legendFormat": "CPU",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "okteto_system_node_memory_bytes{node_name=\"$node\"}",
+          "exemplar": false,
+          "expr": "count(okteto_usage_deploy_result{devenv_name=\"${devenv}\"}) or vector(0)",
+          "format": "time_series",
           "hide": false,
           "instant": false,
-          "legendFormat": "Memory",
+          "interval": "1h",
+          "legendFormat": "Total Deploy Count",
           "range": true,
-          "refId": "B"
+          "refId": "C"
         }
       ],
       "type": "stat"
@@ -190,76 +177,75 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "light-blue",
                 "value": null
-              },
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total Build Time"
+            },
+            "properties": [
               {
-                "color": "red",
-                "value": 80
+                "id": "unit",
+                "value": "dtdurations"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time saved by Smart Builds"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dtdurations"
               }
             ]
           }
-        },
-        "overrides": []
+        ]
       },
       "gridPos": {
-        "h": 11,
-        "w": 12,
-        "x": 0,
-        "y": 4
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 0
       },
-      "id": 10,
+      "id": 179,
+      "interval": "1h",
+      "maxDataPoints": 500,
       "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["max"],
+          "fields": "",
+          "values": false
         },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 30
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
       },
+      "pluginVersion": "11.1.4",
       "targets": [
         {
           "datasource": {
@@ -267,28 +253,18 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "okteto_system_node_cpu_requested_cores{node_name=\"$node\"}",
-          "instant": false,
-          "legendFormat": "Requests",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "okteto_system_node_cpu_usage_cores{node_name=\"$node\"}",
+          "exemplar": false,
+          "expr": "count(okteto_usage_deploy_result{devenv_name=\"${devenv}\", result=\"success\"}) or vector(0)",
+          "format": "time_series",
           "hide": false,
           "instant": false,
-          "legendFormat": "Usage",
+          "interval": "1h",
+          "legendFormat": "Success",
           "range": true,
-          "refId": "B"
+          "refId": "C"
         }
       ],
-      "title": "CPU",
-      "type": "timeseries"
+      "type": "stat"
     },
     {
       "datasource": {
@@ -298,40 +274,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "axisSoftMin": 0,
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
@@ -343,33 +286,67 @@
               },
               {
                 "color": "red",
-                "value": 80
+                "value": 1
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "none"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total Build Time"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dtdurations"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time saved by Smart Builds"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dtdurations"
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
-        "h": 11,
-        "w": 12,
+        "h": 4,
+        "w": 6,
         "x": 12,
-        "y": 4
+        "y": 0
       },
-      "id": 11,
+      "id": 176,
+      "interval": "1h",
+      "maxDataPoints": 500,
       "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["max"],
+          "fields": "",
+          "values": false
         },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 30
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
       },
+      "pluginVersion": "11.1.4",
       "targets": [
         {
           "datasource": {
@@ -377,28 +354,18 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "okteto_system_node_memory_requested_bytes{node_name=\"$node\"}",
-          "instant": false,
-          "legendFormat": "Requests",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "okteto_system_node_memory_usage_bytes{node_name=\"$node\"}",
+          "exemplar": false,
+          "expr": "count(okteto_usage_deploy_result{devenv_name=\"${devenv}\", result=\"failure\"}) or vector(0)",
+          "format": "time_series",
           "hide": false,
           "instant": false,
-          "legendFormat": "Usage",
+          "interval": "1h",
+          "legendFormat": "Failed",
           "range": true,
-          "refId": "B"
+          "refId": "C"
         }
       ],
-      "title": "Memory",
-      "type": "timeseries"
+      "type": "stat"
     },
     {
       "datasource": {
@@ -408,7 +375,104 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "dtdurations"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total Build Time"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dtdurations"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time saved by Smart Builds"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dtdurations"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 178,
+      "interval": "1h",
+      "maxDataPoints": 500,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["max"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 30
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(okteto_usage_deploy_duration_seconds_sum{devenv_name=\"$devenv\"}) or vector(0)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "1h",
+          "legendFormat": "Total Deploy Time",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "fixed"
           },
           "custom": {
             "axisBorderShow": false,
@@ -426,14 +490,17 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -442,32 +509,44 @@
               "mode": "off"
             }
           },
+          "fieldMinMax": false,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "blue",
                 "value": null
-              },
+              }
+            ]
+          },
+          "unit": "dtdurations"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "AVG"
+            },
+            "properties": [
               {
-                "color": "red",
-                "value": 80
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
               }
             ]
           }
-        },
-        "overrides": []
+        ]
       },
       "gridPos": {
-        "h": 10,
+        "h": 11,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 4
       },
       "id": 14,
-      "interval": "5m",
-      "maxDataPoints": 500,
       "options": {
         "legend": {
           "calcs": [],
@@ -475,6 +554,7 @@
           "placement": "bottom",
           "showLegend": false
         },
+        "timezone": ["browser"],
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -487,20 +567,21 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "count(sum(container_cpu_usage_seconds_total{instance=\"${node}:metrics/cadvisor\"}) by (pod))",
+          "exemplar": false,
+          "expr": "(sum(okteto_usage_build_duration_seconds_sum{devenv_name=\"${devenv}\"}) or vector(0)) / (sum(okteto_usage_build_duration_seconds_count{devenv_name=\"${devenv}\"}) or vector(1))",
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "AVG",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Pod Count ",
+      "title": "Deploy Duration",
       "type": "timeseries"
     }
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": ["okteto", "dashboard"],
+  "tags": ["dashboard", "okteto"],
   "templating": {
     "list": [
       {
@@ -509,16 +590,16 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(okteto_system_node_cpu_cores,node_name)",
+        "definition": "label_values(okteto_usage_deploy_result,devenv_name)",
         "hide": 0,
         "includeAll": false,
-        "label": "Node name",
-        "multi": true,
-        "name": "node",
+        "label": "Development Environment",
+        "multi": false,
+        "name": "devenv",
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(okteto_system_node_cpu_cores,node_name)",
+          "query": "label_values(okteto_usage_deploy_result,devenv_name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,
@@ -530,13 +611,11 @@
     ]
   },
   "time": {
-    "from": "now-7d",
-    "to": "now-5m"
+    "from": "now-24h",
+    "to": "now"
   },
-  "timepicker": {
-    "nowDelay": "5m"
-  },
+  "timepicker": {},
   "timezone": "browser",
-  "title": "Nodes",
+  "title": "Deploy",
   "weekStart": ""
 }

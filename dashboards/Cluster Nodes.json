@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.4.1"
+      "version": "11.1.4"
     },
     {
       "type": "datasource",
@@ -63,17 +63,15 @@
       "icon": "external link",
       "includeVars": false,
       "keepTime": false,
-      "tags": [
-        "okteto",
-        "home"
-      ],
+      "tags": ["okteto", "home"],
       "targetBlank": false,
-      "title": "Home",
+      "title": "",
       "tooltip": "",
       "type": "dashboards",
       "url": ""
     }
   ],
+  "liveNow": false,
   "panels": [
     {
       "datasource": {
@@ -83,10 +81,9 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "text",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
-          "decimals": 0,
+          "fieldMinMax": false,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -97,38 +94,38 @@
               }
             ]
           },
-          "unit": "Total"
+          "unit": "Nodes"
         },
         "overrides": [
           {
             "matcher": {
               "id": "byName",
-              "options": "Active namespaces"
+              "options": "Total CPU"
             },
             "properties": [
               {
                 "id": "unit",
-                "value": "Active"
+                "value": "Cores"
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Sleeping namespaces"
+              "options": "Total Memory"
             },
             "properties": [
               {
                 "id": "unit",
-                "value": "Sleeping"
+                "value": "decbytes"
               }
             ]
           }
         ]
       },
       "gridPos": {
-        "h": 3,
-        "w": 8,
+        "h": 4,
+        "w": 24,
         "x": 0,
         "y": 0
       },
@@ -136,12 +133,11 @@
       "options": {
         "colorMode": "none",
         "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -149,10 +145,10 @@
         "text": {
           "valueSize": 30
         },
-        "textMode": "value",
-        "wideLayout": true
+        "textMode": "value_and_name",
+        "wideLayout": false
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.4",
       "targets": [
         {
           "datasource": {
@@ -160,22 +156,11 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "count(okteto_system_namespace_created_time)",
-          "instant": false,
-          "legendFormat": "Total namespaces",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(okteto_system_namespace_status_condition{condition=\"active\"})",
+          "expr": "sum(okteto_system_node_cpu_cores)",
           "hide": false,
           "instant": false,
-          "legendFormat": "Active namespaces",
+          "interval": "$__interval",
+          "legendFormat": "Total CPU",
           "range": true,
           "refId": "B"
         },
@@ -185,233 +170,26 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(okteto_system_namespace_status_condition{condition=\"sleeping\"})",
+          "expr": "sum(okteto_system_node_memory_bytes)",
           "hide": false,
           "instant": false,
-          "legendFormat": "Sleeping namespaces",
+          "legendFormat": "Total Memory",
           "range": true,
           "refId": "C"
-        }
-      ],
-      "title": "Namespace count",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "text",
-            "mode": "fixed"
-          },
-          "decimals": 0,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "Total"
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Active previews"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "Active"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Sleeping previews"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "Sleeping"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 8,
-        "x": 8,
-        "y": 0
-      },
-      "id": 3,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "text": {
-          "valueSize": 30
-        },
-        "textMode": "value",
-        "wideLayout": true
-      },
-      "pluginVersion": "10.4.1",
-      "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "count(okteto_system_preview_created_time)",
+          "expr": "sum(okteto_system_node)",
           "instant": false,
-          "legendFormat": "Total previews",
+          "legendFormat": "Node count",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(okteto_system_preview_status_condition{condition=\"active\"})",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "Active previews",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(okteto_system_preview_status_condition{condition=\"sleeping\"})",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "Sleeping previews",
-          "range": true,
-          "refId": "C"
         }
       ],
-      "title": "Preview count",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "text",
-            "mode": "fixed"
-          },
-          "decimals": 0,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "Total"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Active users"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "Active"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 8,
-        "x": 16,
-        "y": 0
-      },
-      "id": 5,
-      "maxDataPoints": 1,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "text": {
-          "valueSize": 30
-        },
-        "textMode": "value",
-        "wideLayout": true
-      },
-      "pluginVersion": "10.4.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "count(okteto_system_user_last_seen_time)",
-          "instant": false,
-          "legendFormat": "Total users",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "count(increase(okteto_system_user_last_seen_time[$__interval]) > 0)",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "Active users",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "User count",
       "type": "stat"
     },
     {
@@ -432,6 +210,7 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
+            "axisSoftMax": 1,
             "axisSoftMin": 0,
             "barAlignment": 0,
             "drawStyle": "line",
@@ -459,7 +238,6 @@
               "mode": "area"
             }
           },
-          "decimals": 0,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -467,20 +245,89 @@
               {
                 "color": "transparent",
                 "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 0.6
+              },
+              {
+                "color": "red",
+                "value": 0.8
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Requested CPU"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CPU Usage"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Usage"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Requests"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
               }
             ]
           }
-        },
-        "overrides": []
+        ]
       },
       "gridPos": {
-        "h": 10,
-        "w": 8,
+        "h": 11,
+        "w": 12,
         "x": 0,
-        "y": 3
+        "y": 4
       },
-      "id": 2,
-      "maxDataPoints": 16,
+      "id": 8,
       "options": {
         "legend": {
           "calcs": [],
@@ -500,14 +347,30 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(okteto_system_namespace_status_condition{condition=\"active\"})",
+          "exemplar": false,
+          "expr": "sum(okteto_system_node_cpu_requested_cores)/sum(okteto_system_node_cpu_cores)",
+          "hide": false,
           "instant": false,
-          "legendFormat": "Active namespaces",
+          "legendFormat": "Requests",
+          "range": true,
+          "refId": "Requested CPU"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(okteto_system_node_cpu_usage_cores)/sum(okteto_system_node_cpu_cores)",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Usage",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Active Namespaces over time",
+      "title": "CPU",
       "type": "timeseries"
     },
     {
@@ -519,8 +382,8 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "green",
-            "mode": "palette-classic"
+            "fixedColor": "blue",
+            "mode": "fixed"
           },
           "custom": {
             "axisBorderShow": false,
@@ -528,7 +391,8 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
-            "axisSoftMin": 2,
+            "axisSoftMax": 1,
+            "axisSoftMin": 0,
             "barAlignment": 0,
             "drawStyle": "line",
             "fillOpacity": 0,
@@ -555,29 +419,66 @@
               "mode": "area"
             }
           },
-          "decimals": 0,
           "mappings": [],
-          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
                 "color": "transparent",
                 "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 0.6
+              },
+              {
+                "color": "red",
+                "value": 0.8
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Requests"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Usage"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
               }
             ]
           }
-        },
-        "overrides": []
+        ]
       },
       "gridPos": {
-        "h": 10,
-        "w": 8,
-        "x": 8,
-        "y": 3
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 4
       },
-      "id": 4,
-      "maxDataPoints": 16,
+      "id": 9,
       "options": {
         "legend": {
           "calcs": [],
@@ -597,11 +498,12 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(okteto_system_preview_status_condition{scope=\"global\"})",
+          "expr": "sum(okteto_system_node_memory_requested_bytes)/sum(okteto_system_node_memory_bytes)",
+          "hide": false,
           "instant": false,
-          "legendFormat": "Global previews",
+          "legendFormat": "Requests",
           "range": true,
-          "refId": "A"
+          "refId": "B"
         },
         {
           "datasource": {
@@ -609,15 +511,14 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(okteto_system_preview_status_condition{scope=\"personal\"})",
-          "hide": false,
+          "expr": "sum(okteto_system_node_memory_usage_bytes)/sum(okteto_system_node_memory_bytes)",
           "instant": false,
-          "legendFormat": "Personal previews",
+          "legendFormat": "Usage",
           "range": true,
-          "refId": "B"
+          "refId": "A"
         }
       ],
-      "title": "Previews over time",
+      "title": "Memory",
       "type": "timeseries"
     },
     {
@@ -625,6 +526,7 @@
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -637,9 +539,109 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
+            "axisSoftMin": 0,
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 8,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 15
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "timezone": ["browser"],
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "sum(okteto_system_node)",
+          "instant": false,
+          "legendFormat": "Nodes",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Number of Nodes",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 7,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -663,7 +665,6 @@
               "mode": "off"
             }
           },
-          "decimals": 0,
           "mappings": [],
           "noValue": "0",
           "thresholds": {
@@ -672,31 +673,28 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
-          }
+          },
+          "unit": "none"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 10,
-        "w": 8,
-        "x": 16,
-        "y": 3
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 15
       },
-      "id": 6,
-      "maxDataPoints": 16,
+      "id": 10,
       "options": {
         "legend": {
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
+        "timezone": ["browser"],
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -709,32 +707,30 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "count(increase(okteto_system_user_last_seen_time[$__interval])>0)",
+          "expr": "count by (node) (kube_pod_status_phase{phase=\"Running\"}) / sum(okteto_system_node)",
           "instant": false,
-          "legendFormat": "Active users over time",
+          "interval": "",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Active users over time",
+      "title": "Pods per Node",
       "type": "timeseries"
     }
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": [
-    "dashboard",
-    "okteto"
-  ],
+  "tags": ["okteto", "dashboard"],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Namespaces, Previews and Users",
+  "title": "Cluster Nodes",
   "weekStart": ""
 }
