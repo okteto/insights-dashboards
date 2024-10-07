@@ -96,12 +96,6 @@
         },
         "overrides": []
       },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 0,
-        "y": 0
-      },
       "id": 182,
       "options": {
         "colorMode": "value",
@@ -135,153 +129,9 @@
           "hide": false,
           "instant": false,
           "interval": "1h",
-          "legendFormat": "Total Builds Requests",
+          "legendFormat": "Total Builds",
           "range": true,
           "refId": "C"
-        }
-      ],
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "text",
-                "value": null
-              },
-              {
-                "color": "green",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 4,
-        "y": 0
-      },
-      "id": 177,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "vertical",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "text": {
-          "valueSize": 30
-        },
-        "textMode": "value_and_name",
-        "wideLayout": false
-      },
-      "pluginVersion": "11.1.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "sum(okteto_usage_build_result{devenv_name=\"$devenv\",image_name=\"$imageName\",result=\"skipped\"})",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "1h",
-          "legendFormat": "Skipped by Smart Builds",
-          "range": true,
-          "refId": "C"
-        }
-      ],
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "text",
-                "value": null
-              },
-              {
-                "color": "green",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "dtdurations"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 8,
-        "y": 0
-      },
-      "id": 181,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "vertical",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "text": {
-          "valueSize": 30
-        },
-        "textMode": "value_and_name",
-        "wideLayout": false
-      },
-      "pluginVersion": "11.1.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "sum(okteto_usage_build_result{devenv_name=\"$devenv\",image_name=\"$imageName\",result=\"skipped\"}) * (${buildTimeTotal} / ${buildCountTotal})",
-          "instant": false,
-          "legendFormat": "Time Saved by Smart Builds",
-          "range": true,
-          "refId": "A"
         }
       ],
       "type": "stat"
@@ -311,9 +161,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 12,
+        "h": 3,
+        "w": 6,
+        "x": 6,
         "y": 0
       },
       "id": 183,
@@ -385,9 +235,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 16,
+        "h": 3,
+        "w": 6,
+        "x": 12,
         "y": 0
       },
       "id": 176,
@@ -447,57 +297,34 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
+                "color": "text",
                 "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
               }
             ]
           },
-          "unit": "dtdurations"
+          "unit": "none"
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Total Build Time"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "dtdurations"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Time saved by Smart Builds"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "dtdurations"
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 20,
+        "h": 3,
+        "w": 6,
+        "x": 18,
         "y": 0
       },
-      "id": 178,
-      "interval": "1h",
-      "maxDataPoints": 500,
+      "id": 177,
       "options": {
-        "colorMode": "none",
+        "colorMode": "value",
         "graphMode": "none",
         "justifyMode": "center",
         "orientation": "vertical",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": ["max"],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -517,12 +344,12 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(okteto_usage_build_duration_seconds_sum{devenv_name=\"$devenv\",image_name=\"$imageName\"}) or vector(0)",
+          "expr": "sum(okteto_usage_build_result{devenv_name=\"$devenv\",image_name=\"$imageName\",result=\"skipped\"})",
           "format": "time_series",
           "hide": false,
           "instant": false,
           "interval": "1h",
-          "legendFormat": "Total Build Time",
+          "legendFormat": "Smart Builds",
           "range": true,
           "refId": "C"
         }
@@ -609,7 +436,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 3
       },
       "id": 14,
       "options": {
@@ -695,54 +522,6 @@
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
-        "type": "query"
-      },
-      {
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "query_result(  scalar(sum(sum_over_time(okteto_usage_build_duration_seconds_sum{devenv_name=\"$devenv\",image_name=\"$imageName\"}[1w]))))",
-        "hide": 2,
-        "includeAll": false,
-        "label": "buildtime",
-        "multi": false,
-        "name": "buildTimeTotal",
-        "options": [],
-        "query": {
-          "qryType": 3,
-          "query": "query_result(  scalar(sum(sum_over_time(okteto_usage_build_duration_seconds_sum{devenv_name=\"$devenv\",image_name=\"$imageName\"}[1w]))))",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
-      },
-      {
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "query_result(scalar(sum((sum_over_time(okteto_usage_build_duration_seconds_count{devenv_name=\"$devenv\",image_name=\"$imageName\"}[1w])) or vector(1))))",
-        "hide": 2,
-        "includeAll": false,
-        "label": "buildCounTotal",
-        "multi": false,
-        "name": "buildCountTotal",
-        "options": [],
-        "query": {
-          "qryType": 3,
-          "query": "query_result(scalar(sum((sum_over_time(okteto_usage_build_duration_seconds_count{devenv_name=\"$devenv\",image_name=\"$imageName\"}[1w])) or vector(1))))",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
         "type": "query"
       }
     ]

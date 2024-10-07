@@ -87,7 +87,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
+                "color": "text",
                 "value": null
               }
             ]
@@ -122,8 +122,8 @@
         ]
       },
       "gridPos": {
-        "h": 4,
-        "w": 6,
+        "h": 3,
+        "w": 8,
         "x": 0,
         "y": 0
       },
@@ -162,7 +162,7 @@
           "hide": false,
           "instant": false,
           "interval": "1h",
-          "legendFormat": "Total Deploy Count",
+          "legendFormat": "Total Deploy",
           "range": true,
           "refId": "C"
         }
@@ -184,7 +184,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
+                "color": "text",
                 "value": null
               }
             ]
@@ -219,9 +219,9 @@
         ]
       },
       "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 6,
+        "h": 3,
+        "w": 8,
+        "x": 8,
         "y": 0
       },
       "id": 179,
@@ -243,7 +243,7 @@
           "valueSize": 30
         },
         "textMode": "value_and_name",
-        "wideLayout": true
+        "wideLayout": false
       },
       "pluginVersion": "11.1.4",
       "targets": [
@@ -320,9 +320,9 @@
         ]
       },
       "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 12,
+        "h": 3,
+        "w": 8,
+        "x": 16,
         "y": 0
       },
       "id": 176,
@@ -344,7 +344,7 @@
           "valueSize": 30
         },
         "textMode": "value_and_name",
-        "wideLayout": true
+        "wideLayout": false
       },
       "pluginVersion": "11.1.4",
       "targets": [
@@ -361,103 +361,6 @@
           "instant": false,
           "interval": "1h",
           "legendFormat": "Failed",
-          "range": true,
-          "refId": "C"
-        }
-      ],
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "dtdurations"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Total Build Time"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "dtdurations"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Time saved by Smart Builds"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "dtdurations"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 18,
-        "y": 0
-      },
-      "id": 178,
-      "interval": "1h",
-      "maxDataPoints": 500,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "vertical",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": ["max"],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "text": {
-          "valueSize": 30
-        },
-        "textMode": "value_and_name",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.1.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "sum(okteto_usage_deploy_duration_seconds_sum{devenv_name=\"$devenv\"}) or vector(0)",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "1h",
-          "legendFormat": "Total Deploy Time",
           "range": true,
           "refId": "C"
         }
@@ -544,7 +447,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 4
+        "y": 3
       },
       "id": 14,
       "options": {
