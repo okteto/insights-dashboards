@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": ""
+      "version": "11.1.4"
     },
     {
       "type": "datasource",
@@ -56,7 +56,10 @@
       "icon": "external link",
       "includeVars": false,
       "keepTime": false,
-      "tags": ["okteto", "dashboard"],
+      "tags": [
+        "okteto",
+        "dashboard"
+      ],
       "targetBlank": false,
       "title": "Dashboards",
       "tooltip": "",
@@ -72,7 +75,7 @@
         "uid": "-- Mixed --"
       },
       "gridPos": {
-        "h": 12,
+        "h": 23,
         "w": 24,
         "x": 0,
         "y": 0
@@ -87,7 +90,7 @@
         "content": "<img src=\"https://www.okteto.com/docs/img/logo.svg\" alt=\"Okteto Logo\" style=\"width: 30vw; display: block; margin: 0 auto;\">\n<div style=\"max-width: 800px; margin: 0 auto; padding: 20px;\">\n  <h1 style=\"text-align: center;\">Welcome to Okteto Insights</h1>\n  <p style=\"text-align: center;\">Welcome to the Okteto SaaS Grafana instance for Okteto Insights. Here, you can gain valuable insights into your development platform and infrastructure.</p>\n  <p style=\"text-align: center;\">Okteto Insights provides administrators with access to product usage and behavior data, including developer activities, as well as infrastructure utilization and performance data.</p>\n  <p style=\"text-align: center;\">Have questions? Send a ticket to <a href=\"mailto:support@okteto.com\">support@okteto.com</a>.</p>\n  <p style=\"text-align: center;\">Want to check the documentation? Go to <a href=\"https://www.okteto.com/docs/admin/okteto-insights/\">https://www.okteto.com/docs/admin/okteto-insights/</a>.</p>\n  <p style=\"text-align: center;\">Check out the open-source Grafana dashboards at <a href=\"https://github.com/okteto/insights-dashboards\">https://github.com/okteto/insights-dashboards</a>.</p>\n</div>\n",
         "mode": "html"
       },
-      "pluginVersion": "",
+      "pluginVersion": "11.1.4",
       "targets": [
         {
           "datasource": {
@@ -106,12 +109,15 @@
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": ["okteto", "home"],
+  "tags": [
+    "okteto",
+    "home"
+  ],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -119,5 +125,7 @@
   },
   "timezone": "browser",
   "title": "Home",
+  "uid": "be061if5pk7i8b",
+  "version": 3,
   "weekStart": ""
 }

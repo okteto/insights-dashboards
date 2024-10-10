@@ -63,7 +63,10 @@
       "icon": "external link",
       "includeVars": false,
       "keepTime": false,
-      "tags": ["okteto", "home"],
+      "tags": [
+        "okteto",
+        "home"
+      ],
       "targetBlank": false,
       "title": "",
       "tooltip": "",
@@ -137,7 +140,9 @@
         "orientation": "vertical",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": ["max"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -157,7 +162,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "count(okteto_usage_deploy_result{devenv_name=\"${devenv}\"}) or vector(0)",
+          "expr": "sum(increase(okteto_usage_deploy_result{devenv_name=\"$devenv\"}[$__range])) or vector(0)",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -234,7 +239,9 @@
         "orientation": "vertical",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": ["max"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -254,7 +261,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "count(okteto_usage_deploy_result{devenv_name=\"${devenv}\", result=\"success\"}) or vector(0)",
+          "expr": "sum(increase(okteto_usage_deploy_result{devenv_name=\"$devenv\", result!=\"failure\"}[$__range])) or vector(0)",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -335,7 +342,9 @@
         "orientation": "vertical",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": ["max"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -355,7 +364,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "count(okteto_usage_deploy_result{devenv_name=\"${devenv}\", result=\"failure\"}) or vector(0)",
+          "expr": "sum(increase(okteto_usage_deploy_result{devenv_name=\"$devenv\", result=\"failure\"}[$__range])) or vector(0)",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -385,15 +394,15 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 5,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
+            "insertNulls": 43200000,
+            "lineInterpolation": "linear",
             "lineStyle": {
               "fill": "solid"
             },
@@ -423,7 +432,7 @@
               }
             ]
           },
-          "unit": "dtdurations"
+          "unit": "s"
         },
         "overrides": [
           {
@@ -457,7 +466,9 @@
           "placement": "bottom",
           "showLegend": false
         },
-        "timezone": ["browser"],
+        "timezone": [
+          "browser"
+        ],
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -471,7 +482,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "(sum(okteto_usage_build_duration_seconds_sum{devenv_name=\"${devenv}\"}) or vector(0)) / (sum(okteto_usage_build_duration_seconds_count{devenv_name=\"${devenv}\"}) or vector(1))",
+          "expr": "(sum(increase(okteto_usage_deploy_duration_seconds_sum{devenv_name=\"$devenv\"}[$__interval])) or vector(0)) \n/\n(sum(increase(okteto_usage_deploy_duration_seconds_count{devenv_name=\"$devenv\"}[$__interval])) or vector(1))",
           "instant": false,
           "legendFormat": "AVG",
           "range": true,
@@ -484,7 +495,10 @@
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": ["dashboard", "okteto"],
+  "tags": [
+    "dashboard",
+    "okteto"
+  ],
   "templating": {
     "list": [
       {
@@ -518,9 +532,11 @@
     "to": "now"
   },
   "timepicker": {
-    "hidden": true
+    "hidden": false
   },
   "timezone": "browser",
   "title": "Deploy",
+  "uid": "deploydev",
+  "version": 30,
   "weekStart": ""
 }

@@ -208,7 +208,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 5,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -317,7 +317,7 @@
             "axisSoftMin": 0,
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 5,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -495,7 +495,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "count(sum(container_cpu_usage_seconds_total{instance=\"${node}:metrics/cadvisor\"}) by (pod)) or count(sum(okteto_system_pod_container_cpu_usage_cores{node_name=\"$node\"}) by (pod_name))",
+          "expr": "count(sum(container_cpu_usage_seconds_total{instance=\"${node}:metrics/cadvisor\"}) by (pod))",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -551,5 +551,7 @@
   },
   "timezone": "browser",
   "title": "Nodes",
+  "uid": "fdy36n19ags1sbas",
+  "version": 25,
   "weekStart": ""
 }

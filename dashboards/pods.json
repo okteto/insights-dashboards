@@ -57,7 +57,10 @@
       "icon": "external link",
       "includeVars": false,
       "keepTime": false,
-      "tags": ["okteto", "home"],
+      "tags": [
+        "okteto",
+        "home"
+      ],
       "targetBlank": false,
       "title": "",
       "tooltip": "",
@@ -99,7 +102,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 5,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -139,13 +142,28 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Requested"
+              "options": "Usage"
             },
             "properties": [
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "yellow",
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Requests"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
                   "mode": "fixed"
                 }
               }
@@ -165,9 +183,11 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
-        "timezone": ["browser"],
+        "timezone": [
+          "browser"
+        ],
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -221,7 +241,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 5,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -272,6 +292,36 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Requests"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Usage"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
           }
         ]
       },
@@ -289,7 +339,9 @@
           "placement": "bottom",
           "showLegend": true
         },
-        "timezone": ["browser"],
+        "timezone": [
+          "browser"
+        ],
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -327,7 +379,10 @@
     }
   ],
   "schemaVersion": 39,
-  "tags": ["okteto", "dashboard"],
+  "tags": [
+    "okteto",
+    "dashboard"
+  ],
   "templating": {
     "list": [
       {
@@ -408,8 +463,12 @@
     "from": "now-24h",
     "to": "now"
   },
-  "timepicker": {},
+  "timepicker": {
+    "hidden": true
+  },
   "timezone": "browser",
   "title": "Pods",
+  "uid": "ddzjkvick1gxscqa",
+  "version": 23,
   "weekStart": ""
 }

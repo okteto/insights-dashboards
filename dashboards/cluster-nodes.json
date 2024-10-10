@@ -63,7 +63,10 @@
       "icon": "external link",
       "includeVars": false,
       "keepTime": false,
-      "tags": ["okteto", "home"],
+      "tags": [
+        "okteto",
+        "home"
+      ],
       "targetBlank": false,
       "title": "",
       "tooltip": "",
@@ -137,7 +140,9 @@
         "orientation": "vertical",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -214,7 +219,7 @@
             "axisSoftMin": 0,
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 5,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -298,7 +303,7 @@
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "yellow",
+                  "fixedColor": "light-orange",
                   "mode": "fixed"
                 }
               }
@@ -313,7 +318,7 @@
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "green",
+                  "fixedColor": "blue",
                   "mode": "fixed"
                 }
               }
@@ -395,7 +400,7 @@
             "axisSoftMin": 0,
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 5,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -449,7 +454,7 @@
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "green",
+                  "fixedColor": "blue",
                   "mode": "fixed"
                 }
               }
@@ -464,7 +469,7 @@
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "yellow",
+                  "fixedColor": "orange",
                   "mode": "fixed"
                 }
               }
@@ -597,7 +602,9 @@
           "placement": "bottom",
           "showLegend": false
         },
-        "timezone": ["browser"],
+        "timezone": [
+          "browser"
+        ],
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -694,7 +701,9 @@
           "placement": "bottom",
           "showLegend": false
         },
-        "timezone": ["browser"],
+        "timezone": [
+          "browser"
+        ],
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -721,18 +730,24 @@
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": ["okteto", "dashboard"],
+  "tags": [
+    "okteto",
+    "dashboard"
+  ],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-30d",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {
-    "hidden": true
+    "hidden": true,
+    "nowDelay": "5m"
   },
   "timezone": "browser",
   "title": "Cluster Nodes",
+  "uid": "fdy36n19ags1sb",
+  "version": 26,
   "weekStart": ""
 }
