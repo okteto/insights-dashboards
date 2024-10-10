@@ -63,7 +63,10 @@
       "icon": "external link",
       "includeVars": false,
       "keepTime": false,
-      "tags": ["okteto", "home"],
+      "tags": [
+        "okteto",
+        "home"
+      ],
       "targetBlank": false,
       "title": "",
       "tooltip": "",
@@ -144,7 +147,9 @@
         "orientation": "vertical",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": ["max"],
+          "calcs": [
+            "max"
+          ],
           "fields": "",
           "values": false
         },
@@ -490,25 +495,12 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "count(sum(container_cpu_usage_seconds_total{instance=\"${node}:metrics/cadvisor\"}) by (pod))",
-          "hide": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "editorMode": "code",
-          "expr": "count(sum(okteto_system_pod_container_cpu_usage_cores{node_name=\"$node\"}) by (pod_name))\n",
+          "expr": "count(sum(container_cpu_usage_seconds_total{instance=\"${node}:metrics/cadvisor\"}) by (pod)) or count(sum(okteto_system_pod_container_cpu_usage_cores{node_name=\"$node\"}) by (pod_name))",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
-          "refId": "C"
+          "refId": "A"
         }
       ],
       "title": "Pods",
@@ -517,7 +509,10 @@
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": ["okteto", "dashboard"],
+  "tags": [
+    "okteto",
+    "dashboard"
+  ],
   "templating": {
     "list": [
       {
