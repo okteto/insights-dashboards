@@ -491,10 +491,24 @@
           },
           "editorMode": "code",
           "expr": "count(sum(container_cpu_usage_seconds_total{instance=\"${node}:metrics/cadvisor\"}) by (pod))",
+          "hide": true,
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "count(sum(okteto_system_pod_container_cpu_usage_cores{node_name=\"$node\"}) by (pod_name))\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
         }
       ],
       "title": "Pods",
@@ -533,10 +547,11 @@
     ]
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-30d",
     "to": "now-5m"
   },
   "timepicker": {
+    "hidden": true,
     "nowDelay": "5m"
   },
   "timezone": "browser",

@@ -56,10 +56,7 @@
       "icon": "external link",
       "includeVars": false,
       "keepTime": false,
-      "tags": [
-        "okteto",
-        "dashboard"
-      ],
+      "tags": ["okteto", "dashboard"],
       "targetBlank": false,
       "title": "Dashboards",
       "tooltip": "",
@@ -109,10 +106,7 @@
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": [
-    "okteto",
-    "home"
-  ],
+  "tags": ["okteto", "home"],
   "templating": {
     "list": []
   },
@@ -120,7 +114,9 @@
     "from": "now-6h",
     "to": "now"
   },
-  "timepicker": {},
+  "timepicker": {
+    "hidden": true
+  },
   "timezone": "browser",
   "title": "Home",
   "weekStart": ""

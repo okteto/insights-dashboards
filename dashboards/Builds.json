@@ -124,7 +124,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(okteto_usage_build_result{devenv_name=\"$devenv\",image_name=\"$imageName\"})",
+          "expr": "sum(increase(okteto_usage_build_result{devenv_name=\"$devenv\", image_name=\"$imageName\"}[$__range])) or vector(0)",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -194,7 +194,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(okteto_usage_build_result{devenv_name=\"$devenv\",image_name=\"$imageName\",result=\"success\"})",
+          "expr": "sum(increase(okteto_usage_build_result{devenv_name=\"$devenv\", image_name=\"$imageName\", result=\"success\"}[$__range])) or vector(0)",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -270,7 +270,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(okteto_usage_build_result{devenv_name=\"${devenv}\", image_name=\"$imageName\", result=\"failed\"}) or vector(0)",
+          "expr": "sum(increase(okteto_usage_build_result{devenv_name=\"$devenv\", image_name=\"$imageName\", result=\"failure\"}[$__range])) or vector(0)",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -344,7 +344,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(okteto_usage_build_result{devenv_name=\"$devenv\",image_name=\"$imageName\",result=\"skipped\"})",
+          "expr": "sum(increase(okteto_usage_build_result{devenv_name=\"$devenv\", image_name=\"$imageName\",result=\"skipped\"}[$__range])) or vector(0)",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -393,7 +393,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -460,7 +460,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "(sum(okteto_usage_build_duration_seconds_sum{devenv_name=\"$devenv\",image_name=\"$imageName\"}) or vector(0)) / (sum(okteto_usage_build_duration_seconds_count{devenv_name=\"$devenv\",image_name=\"$imageName\"}) or vector(1))",
+          "expr": "(sum(increase(okteto_usage_build_duration_seconds_sum{devenv_name=\"$devenv\", image_name=\"$imageName\"}[$__interval])) or vector(0)) \n/\n(sum(increase(okteto_usage_build_duration_seconds_count{devenv_name=\"$devenv\", image_name=\"$imageName\"}[$__interval])) or vector(1))",
           "instant": false,
           "legendFormat": "AVG",
           "range": true,
@@ -527,10 +527,12 @@
     ]
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-30d",
     "to": "now"
   },
-  "timepicker": {},
+  "timepicker": {
+    "hidden": true
+  },
   "timezone": "browser",
   "title": "Builds",
   "weekStart": ""
