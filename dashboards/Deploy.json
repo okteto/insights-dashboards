@@ -532,11 +532,11 @@
     "to": "now"
   },
   "timepicker": {
-    "hidden": false
+    "hidden": true
   },
   "timezone": "browser",
   "title": "Deploy",
   "uid": "deploydev",
-  "version": 30,
+  "version": 31,
   "weekStart": ""
 }
