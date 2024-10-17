@@ -63,10 +63,7 @@
       "icon": "external link",
       "includeVars": false,
       "keepTime": false,
-      "tags": [
-        "okteto",
-        "home"
-      ],
+      "tags": ["okteto", "home"],
       "targetBlank": false,
       "title": "",
       "tooltip": "",
@@ -140,9 +137,7 @@
         "orientation": "vertical",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -602,9 +597,7 @@
           "placement": "bottom",
           "showLegend": false
         },
-        "timezone": [
-          "browser"
-        ],
+        "timezone": ["browser"],
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -701,9 +694,7 @@
           "placement": "bottom",
           "showLegend": false
         },
-        "timezone": [
-          "browser"
-        ],
+        "timezone": ["browser"],
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -730,10 +721,7 @@
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": [
-    "okteto",
-    "dashboard"
-  ],
+  "tags": ["okteto", "dashboard"],
   "templating": {
     "list": []
   },
@@ -747,7 +735,5 @@
   },
   "timezone": "browser",
   "title": "Cluster Nodes",
-  "uid": "fdy36n19ags1sb",
-  "version": 28,
   "weekStart": ""
 }
