@@ -738,8 +738,8 @@
     "list": []
   },
   "time": {
-    "from": "now-7d",
-    "to": "now"
+    "from": "now-30d",
+    "to": "now-5m"
   },
   "timepicker": {
     "hidden": true,
@@ -748,6 +748,6 @@
   "timezone": "browser",
   "title": "Cluster Nodes",
   "uid": "fdy36n19ags1sb",
-  "version": 26,
+  "version": 28,
   "weekStart": ""
 }
