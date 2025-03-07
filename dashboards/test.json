@@ -470,7 +470,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "(sum(increase(okteto_usage_test_duration_seconds_sum{devenv_name=\"$devenv\"}[$__interval])) or vector(0)) \n/\n(sum(increase(okteto_usage_test_duration_seconds_count{devenv_name=\"$devenv\"}[$__interval])) or vector(1))",
+          "expr": "(sum(increase(okteto_usage_test_duration_seconds_sum{devenv_name=\"$devenv\", test_name=\"$testName\"}[$__interval])) or vector(0)) \n/\n(sum(increase(okteto_usage_test_duration_seconds_count{devenv_name=\"$devenv\",test_name=\"$testName\"}[$__interval])) or vector(1))",
           "instant": false,
           "legendFormat": "AVG",
           "range": true,
@@ -539,6 +539,6 @@
   "timezone": "browser",
   "title": "Test",
   "uid": "oktetotest",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
