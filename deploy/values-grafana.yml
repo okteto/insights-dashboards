@@ -19,48 +19,78 @@ datasources:
   datasources.yaml:
     apiVersion: 1
     datasources:
-    - name: Prometheus
-      type: prometheus
-      url: http://prometheus-server
-      access: proxy
-      isDefault: true
-      jsonData:
-        timeInterval: 60s
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus-server
+        access: proxy
+        isDefault: true
+        jsonData:
+          timeInterval: 60s
 dashboardProviders:
   dashboardproviders.yaml:
     apiVersion: 1
     providers:
-    - name: 'default'
-      orgId: 1
-      folder: 'Okteto'
-      type: file
-      disableDeletion: true
-      editable: false
-      options:
-        path: /var/lib/grafana/dashboards/default
+      - name: "default"
+        orgId: 1
+        folder: "Okteto"
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /var/lib/grafana/dashboards/default
 dashboards:
   default:
-    pods:
-      name: "Pods"
-      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/main/dashboards/pods.json"
+    activity:
+      name: "activity"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250307/dashboards/Activity.json"
       datasource:
-      - name: DS_PROMETHEUS
-        value: Prometheus
+        - name: DS_PROMETHEUS
+          value: Prometheus
+    builds:
+      name: "builds"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250307/dashboards/Builds.json"
+      datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+    clusterNodes:
+      name: "clusterNodes"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250307/dashboards/cluster-nodes.json"
+      datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+    deploy:
+      name: "deploy"
+      urlclusterNodes: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250307/dashboards/Deploy.json"
+      datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+    home:
+      name: "home"
+      urlclusterNodes: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250307/dashboards/home.json"
+      datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+    namespace:
+      name: "namespace"
+      urlclusterNodes: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250307/dashboards/Namespace.json"
+      datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
     nodes:
-      name: "Nodes"
-      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/main/dashboards/nodes.json"
+      name: "nodes"
+      urlclusterNodes: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250307/dashboards/nodes.json"
       datasource:
-      - name: DS_PROMETHEUS
-        value: Prometheus
-    namespacesPreviewsAndUsers:
-      name: "Namespaces, Previews and Users"
-      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/main/dashboards/namespaces-previews-and-users.json"
+        - name: DS_PROMETHEUS
+          value: Prometheus
+    pods:
+      name: "pods"
+      urlclusterNodes: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250307/dashboards/pods.json"
       datasource:
-      - name: DS_PROMETHEUS
-        value: Prometheus
-    buildAndDeploy:
-      name: "Build and Deploy"
-      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/main/dashboards/build-and-deploy.json"
+        - name: DS_PROMETHEUS
+          value: Prometheus
+    test:
+      name: "test"
+      urlclusterNodes: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250307/dashboards/test.json"
       datasource:
-      - name: DS_PROMETHEUS
-        value: Prometheus
+        - name: DS_PROMETHEUS
+          value: Prometheus
