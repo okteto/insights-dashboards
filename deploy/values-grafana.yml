@@ -42,13 +42,13 @@ dashboards:
   default:
     activity:
       name: "activity"
-      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250307/dashboards/Activity.json"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/Activity.json"
       datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
     builds:
       name: "builds"
-      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250307/dashboards/Builds.json"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/Builds.json"
       datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
@@ -60,37 +60,37 @@ dashboards:
           value: Prometheus
     deploy:
       name: "deploy"
-      urlclusterNodes: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/Deploy.json"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/Deploy.json"
       datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
     home:
       name: "home"
-      urlclusterNodes: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/home.json"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/home.json"
       datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
     namespace:
       name: "namespace"
-      urlclusterNodes: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/Namespace.json"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/Namespace.json"
       datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
     nodes:
       name: "nodes"
-      urlclusterNodes: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/nodes.json"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/nodes.json"
       datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
     pods:
       name: "pods"
-      urlclusterNodes: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/pods.json"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/pods.json"
       datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
     test:
       name: "test"
-      urlclusterNodes: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/test.json"
+      url: "https://raw.githubusercontent.com/okteto/insights-dashboards/refs/tags/0.0.0-20250306/dashboards/test.json"
       datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
