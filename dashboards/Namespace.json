@@ -68,7 +68,6 @@
       "url": ""
     }
   ],
-  "liveNow": false,
   "panels": [
     {
       "datasource": {
@@ -159,12 +158,13 @@
         ]
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 7,
+        "w": 24,
         "x": 0,
         "y": 0
       },
       "id": 15,
+      "maxDataPoints": 500,
       "options": {
         "legend": {
           "calcs": [],
@@ -176,10 +176,12 @@
           "browser"
         ],
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
@@ -314,12 +316,13 @@
         ]
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 0
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 7
       },
       "id": 16,
+      "maxDataPoints": 500,
       "options": {
         "legend": {
           "calcs": [],
@@ -331,10 +334,12 @@
           "browser"
         ],
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
@@ -383,7 +388,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "barWidthFactor": 0.6,
-            "drawStyle": "line",
+            "drawStyle": "bars",
             "fillOpacity": 6,
             "gradientMode": "none",
             "hideFrom": {
@@ -392,7 +397,7 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "stepAfter",
+            "lineInterpolation": "stepBefore",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -442,13 +447,13 @@
         ]
       },
       "gridPos": {
-        "h": 10,
+        "h": 8,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 13
       },
-      "id": 18,
-      "interval": "5m",
+      "id": 19,
+      "interval": "20m",
       "maxDataPoints": 500,
       "options": {
         "legend": {
@@ -458,10 +463,12 @@
           "showLegend": false
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
@@ -469,12 +476,12 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "count(sum(container_cpu_usage_seconds_total{namespace=\"$namespace\"}) by (pod))",
+          "expr": "count by (pod) (\n  increase(okteto_system_pod_container_cpu_usage_cores{namespace=\"$namespace\"}[$__interval]) > 0\n)",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
-          "refId": "A"
+          "refId": "B"
         }
       ],
       "title": "Pods",
@@ -482,7 +489,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 39,
+  "schemaVersion": 40,
   "tags": [
     "okteto",
     "dashboard"
@@ -496,10 +503,8 @@
           "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(okteto_system_pod_container_cpu_requests_cores,namespace)",
-        "hide": 0,
         "includeAll": false,
         "label": "Namespace",
-        "multi": false,
         "name": "namespace",
         "options": [],
         "query": {
@@ -509,7 +514,6 @@
         },
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 1,
         "type": "query"
       }
