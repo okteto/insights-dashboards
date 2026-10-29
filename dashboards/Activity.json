@@ -203,7 +203,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "count(increase(okteto_system_user_last_seen_time[$__interval]) > 0)",
+          "expr": "count(increase(okteto_system_user_last_seen_time[30d]) > 0)",
           "hide": false,
           "instant": false,
           "legendFormat": "Active Users",
@@ -390,7 +390,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "count(increase(okteto_system_user_last_seen_time[$__interval])>0)",
+          "expr": "count(increase(okteto_system_user_last_seen_time[30d])>0)",
           "instant": false,
           "legendFormat": "Active users",
           "range": true,
